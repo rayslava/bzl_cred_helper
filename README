@@ -1,0 +1,25 @@
+NAME
+    bzl_cred_helper.pl - Extract credentials from a .netrc.gpg file for a
+    given URI
+
+SYNOPSIS
+      $ echo '{"uri":"http://example.com"}' | perl bzl_cred_helper.pl get
+
+DESCRIPTION
+    This script reads a JSON input from stdin, extracts the URI, finds the
+    matching credentials from the decrypted .netrc.gpg file, and outputs
+    JSON-formatted headers with Authorization token for Bazel.
+
+    The script assumes that the credentials are stored in the ~/.netrc.gpg
+    and that gpg is configured correctly on your host machine (like
+    gpg-agent and so on).
+
+USAGE
+      bazel build --credential_helper=/path/to/bzl_cred_helper.pl '//pkg:*'
+
+LICENSE
+    BSD 2-Clause License, see the LICENSE file
+
+AUTHOR
+    Slava Barinov <rayslava@gmail.com>
+
